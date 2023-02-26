@@ -6,7 +6,7 @@ import UserList from './components/UserList';
 function App() {
   
   const [usersData, setUsersData] = useState([]);
-  const [usersSelected, setUsersSelected] = useState({});
+  const [usersSelected, setUsersSelected] = useState(null);
   
   useEffect(() => {
       axios
