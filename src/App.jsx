@@ -1,32 +1,62 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import UserForm from './components/UserForm'
 import './App.css'
-
+import { useState, useEffect } from 'react'
+import axios from 'axios';
+import UserList from './components/UserList';
 function App() {
-  const [count, setCount] = useState(0)
+  
+  const [usersData, setUsersData] = useState([]);
+  const [usersSelected, setUsersSelected] = useState({});
+  
+  useEffect(() => {
+      axios
+      .get("https://users-crud-glha.onrender.com/user")
+      .then(resp => setUsersData(resp?.data))
+      .catch(error => console.error(error))
+  }, []);
+  const getUsersData = () => {
+    axios
+    .get("https://users-crud-glha.onrender.com/user")
+    .then(resp => setUsersData(resp?.data))
+    .catch(error => console.error(error))  
+  }
+
+  const createUser = (data) => {
+    axios
+    .post("https://users-crud-glha.onrender.com/user", data)
+    .then(() => getUsersData())
+    .catch((error) => console.error(error))
+  }
+  const deleteUser = (id) => {
+    axios
+    .delete(`https://users-crud-glha.onrender.com/user/${id}`)
+    .then(() => getUsersData())
+    .catch((error) => console.error(error))
+  }
+  const selectUser = (user) => {
+    setUsersSelected(user)
+  }
+  const upDateUser= (data) => {
+    const index = usersData.findIndex((user) => user.id===data.id)
+    usersData[index] = data;
+    setUsersData(...[usersData]);
+    setUsersSelected(null);
+  }
 
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+        
+        <h1>Register User</h1>
+        <UserForm 
+        createUser={(data) => createUser(data)}
+        usersSelected={usersSelected}
+        upDateUser={upDateUser}/>
+        <h1>Lista de Usuarios</h1>
+        <UserList 
+        usersData={usersData}
+        deleteUser={deleteUser}
+        selectUser={selectUser}
+        />
     </div>
   )
 }
