@@ -66,6 +66,10 @@
   .usersList {
     width: 70%;
     margin-bottom: 50px;
+    
+  }
+  .usersList Table {
+   
   }
   tr:nth-child(7) {
     background-color: brown;

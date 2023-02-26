@@ -34,7 +34,7 @@ const UserList = ( {usersData, deleteUser, selectUser} ) => {
           <td><Button 
         variant="danger"
         onClick={() => deleteUser(user?.id)}>Delete</Button></td>
-        <td><Button 
+        <td colSpan={2}><Button 
         variant="success"
         onClick={() => selectUser(user)}
         >Update</Button></td>
