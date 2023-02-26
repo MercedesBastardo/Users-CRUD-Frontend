@@ -6,6 +6,7 @@ const UserList = ( {usersData, deleteUser, selectUser} ) => {
     let passW = "x";
     console.log(usersData)
     return(
+      <div className='usersList'>
         <Table striped bordered hover>
       <thead>
         <tr>
@@ -15,6 +16,9 @@ const UserList = ( {usersData, deleteUser, selectUser} ) => {
           <th>Email</th>
           <th>Password</th>
           <th>Birthday</th>
+          <th></th>
+          <th></th>
+          
         </tr>
       </thead>
       
@@ -27,16 +31,14 @@ const UserList = ( {usersData, deleteUser, selectUser} ) => {
           <td>{user?.email}</td>
           <td>{passW.repeat(user?.password.length)}</td>
           <td>{user?.birthday}</td>
-        </tr>
-        
-        <Button 
+          <td><Button 
         variant="danger"
-        onClick={() => deleteUser(user?.id)}>Delete</Button>
-        <Button 
-        variant="primary"
+        onClick={() => deleteUser(user?.id)}>Delete</Button></td>
+        <td><Button 
+        variant="success"
         onClick={() => selectUser(user)}
-        >Update</Button>
-        
+        >Update</Button></td>
+        </tr>
         </tbody>
 
         )) 
@@ -44,6 +46,7 @@ const UserList = ( {usersData, deleteUser, selectUser} ) => {
        
       
     </Table>
+    </div>
     )
 }
 export default UserList

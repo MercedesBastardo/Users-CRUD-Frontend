@@ -2,13 +2,96 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
   }
   
   body {
-    padding: 1rem;
+  
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
       "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-      display: flex;
+      background-image: linear-gradient(to left top,transparent,rgb(234, 233, 233));
+      width: 100%;
+  }
+  
+  nav {
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    
+  }
+  nav .btn {
+    gap: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  nav .btn button {
+    width: 120px;
+  }
+  nav .btn Button:hover {
+    color: blue;
+  }
+  nav .btn button a {
+    font-weight: bold;
+    font-size: 18px;
+    color: black;
+  }
+  
+  .App {
+    display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+  }
+  .App h1 {
+    font-size: 50px;
+    color: rgb(104, 103, 103);
+    padding: 50px;
+    width: 400px;
+    text-align: center;
+  
+  }
+  form {
+    width: 400px;
+    padding: 20px;
+    border: 2px groove grey;
+    border-radius: 1rem;
+  }
+  form button {
+    position: relative;
+    left: 130px;
+  }
+  .usersList {
+    width: 70%;
+    margin-bottom: 50px;
+  }
+  tr:nth-child(7) {
+    background-color: brown;
+  }
+  td:nth-child(7) {
+    text-align: center;
+  }
+  td:nth-child(8) {
+    text-align: center;
+  }
+  footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: black;
+    padding: 30px;
+  }
+  footer h2 {
+    font-size: 25px;
+  }
+  footer .icons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 30px;
+    font-size: 30px;
+    
   }

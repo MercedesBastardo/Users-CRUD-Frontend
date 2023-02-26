@@ -75,7 +75,7 @@ const UserForm = ({createUser, usersSelected, upDateUser}) => {
                 placeholder="Enter Birthday" />
             </Form.Group>
       
-      <Button variant="warning" type="submit">
+      <Button variant="dark"  type="submit">
         Submit
       </Button>
     </Form>
